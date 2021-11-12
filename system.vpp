@@ -1,0 +1,35 @@
+class System
+
+instance variables
+containers : seq of Container;
+pickUp : bool;
+
+operations
+
+public System : seq of Container ==> System 
+System(sc) ==
+(
+    containers := sc;
+    pickUp := false;
+);
+
+public getFullContainers : () ==> seq of Container
+getFullContainers() ==
+(
+    return containers;
+);
+
+public pickUpContainers : () ==> ()
+pickUpContainers() ==
+(
+    for c in containers do
+        c.needEmptying := false;
+);
+
+public pickUpContainer : Container ==> ()
+pickUpContainer(c) ==
+(
+    c.needEmptying := true;
+)
+
+end System

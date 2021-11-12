@@ -1,0 +1,39 @@
+class Container
+
+types
+public containerID =token;
+
+instance variables
+public id : containerID;
+public fillLevelStates : seq of char;
+public needEmptying : bool;
+public compressCounter : nat;
+
+operations
+public Container : containerID * seq of char * bool * nat ==> Container
+Container (cID, fLS, nE, cC) ==
+(
+    id := cID;
+    fillLevelStates := fLS;
+    needEmptying := nE;
+    compressCounter := cC;
+);
+
+public compress : () ==> ()
+compress()==
+(
+    fillLevelStates := "bajo";
+);
+
+public sendAlert : () ==> ()
+sendAlert () ==
+(
+    needEmptying := true;
+);
+
+public getAlert : () ==> bool
+getAlert() == 
+(
+    return needEmptying;
+)
+end Container
